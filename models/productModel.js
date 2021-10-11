@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
         type:Object,
         required: true,
     },
-    category:{
+    category_Id:{
         type:String,
         required: true,
     },
@@ -37,7 +37,7 @@ const productSchema = new mongoose.Schema({
         type:Boolean,
         default: false,
     },
-    sold:{
+    inventory:{
         type:Number,
         default: 0,
     },

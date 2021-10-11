@@ -1,14 +1,24 @@
-const Users = require('../models/userModel');
+const Admins = require('../models/adminModel');
 const authAdmin = async (req,res,next)=>{
     try {
         //get user info by id
-        const user = await Users.findOne({
+        const admin = await Admins.findOne({
             _id:req.user.id
         });
-        if(user.role==0) return res.status(400).json({msg : "Truy cập bị từ chối!"});
+        if(!admin) return res.status(400).json({
+            data:[],
+            success:false,
+            message:'Truy cập bị từ chối',
+            total:0,
+        });
         next();
     } catch (error) {
-        return res.status(500).json({msg : error.massage});
+        return res.status(500).json({
+            data:[],
+            success:false,
+            message:'Lỗi hệ thống',
+            total:0,
+        });
     }
 }
 

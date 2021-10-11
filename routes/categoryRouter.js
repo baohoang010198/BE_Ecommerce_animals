@@ -5,14 +5,17 @@ const authAdmin = require('../middleware/authAdmin');
 
 
 // get and create Category
+router.route('/category/search')
+    .post(auth, authAdmin,categoryController.searchCategories);
 router.route('/category')
     .get(categoryController.getCategories)
     .post(auth, authAdmin,categoryController.createCategory);
 
 // delete update category
 router.route('/category/:id')
-    .delete(auth, authAdmin, categoryController.deleteCategory)
-    .put(auth, authAdmin, categoryController.updateCategory)
+    .get(auth, authAdmin, categoryController.getCategory)
+    .delete(auth, authAdmin,categoryController.deleteCategory)
+    .put(auth, authAdmin,categoryController.updateCategory)
 
 
 module.exports = router;

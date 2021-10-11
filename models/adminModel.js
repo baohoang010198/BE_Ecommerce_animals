@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name:{
         type:String,
         required: true,
@@ -16,15 +16,10 @@ const userSchema = new mongoose.Schema({
         required: true,
 
     },
-    phoneNumber:{
-        type:String,
-        required: true,
-        unique: true,
+    role:{
+        type:Number,
+        default: 0,
     },
-    cart:{
-        type: Array,
-        default:[],
-    }
 },
 {
     timestamps: true,
@@ -32,4 +27,4 @@ const userSchema = new mongoose.Schema({
 
 )
 
-module.exports = mongoose.model('Users',userSchema)
+module.exports = mongoose.model('Admins',adminSchema)

@@ -17,11 +17,18 @@ app.use(fileupload({
 
 
 //ROUTES
-app.use('/user', require('./routes/userRouter'));
+app.use('/api/auth_admin', require('./routes/authAdminRouter'));
+app.use('/api/auth_user', require('./routes/authUserRouter'));
 app.use('/api', require('./routes/categoryRouter'));
 app.use('/api', require('./routes/upload'));
 app.use('/api', require('./routes/productRouter'));
 app.use('/api', require('./routes/paymentRoute'));
+app.use('/api', require('./routes/employeRouter'));
+app.use('/api', require('./routes/attendanceRouter'));
+app.use('/api', require('./routes/adminRoute'));
+app.use('/api', require('./routes/userRoute'));
+app.use('/api', require('./routes/salaryRouter'));
+app.use('/api', require('./routes/adviseRouter'));
 //Connect to mongodb
 db.connect();
 

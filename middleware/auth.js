@@ -2,16 +2,31 @@ const jwt = require('jsonwebtoken');
 const auth = (req,res,next)=>{
     try {
         const token = req.header("Authorization");
-        if(!token) return res.status(400).json({msg : "Invalid Authentication"});
-
+        if(!token)
+            return res.status(200).json({
+                data:[],
+                success:false,
+                message:'Invalid Authentication',
+                total:0,
+            });
         jwt.verify(token,process.env.ACCESS_TOKEN_SECRET, (error,user)=>{
-            if(error) return res.status(400).json({msg : "Invalid Authentication"});
-
-            req.user = user;
-            next();
+        if(error)
+            return res.status(200).json({
+                data:[],
+                success:false,
+                message:'Invalid Authentication',
+                total:0,
+            });
+        req.user = user;
+        next();
         })
     } catch (error) {
-        return res.status(500).json({msg : error.massage});
+        return res.status(500).json({
+            data:[],
+            success:false,
+            message:'Lỗi hệ thống',
+            total:0,
+        });
     }
 }
 
